@@ -29,15 +29,27 @@ Use cabal to install the required packages:
 
     cabal update
     cabal install json
-    cabal install pandoc
+    cabal install pandoc-1.2.1
 
 To enable extra features of Pandoc:
 
-    cabal install pandoc -fhighlighting -fciteproc
+    cabal install pandoc-1.2.1 -fhighlighting -fciteproc
 
-And finally, we can build the binary:
+Now compile with:
 
-    cd /path/to/libpandoc
+    ./Setup.lhs configure --user
     make
 
+###Troubleshooting
 
+If you already have a newer version of pandoc, you need to revert back to exactly version `1.2.1`.
+
+Run this command to show which packages/versions are currently installed:
+
+    ghc-pkg list
+
+You can remove a package using this command:
+
+    ghc-pkg unregister package-X.X
+
+If you're having trouble with `make`, try running `make clean` first. You then have to re-run `Setup.lhs`.
